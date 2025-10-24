@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 
 
     scrollText: {
-        fontSize: 18, color: 'white', fontWeight: '500', height: 38, width: 138, textAlign: 'center', borderRadius: 8, textAlignVertical: 'center', backgroundColor: 'rgba(80, 130, 200, 0.12)', borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.25)',
+        fontSize: 16, color: 'white', fontWeight: '500', height: 37, width: 136, textAlign: 'center', borderRadius: 8, textAlignVertical: 'center', backgroundColor: 'rgba(80, 130, 200, 0.12)', borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.25)',
 
     },
 })
