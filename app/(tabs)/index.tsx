@@ -47,7 +47,7 @@ export default function App() {
 
             <Animated.View entering={FadeInDown.delay(500).duration(700).easing(Easing.linear)} exiting={FadeOut} style={styles.bannerView}  >
 
-                <AntDesign name="thunderbolt" size={102} color="#030712" style={styles.thunderIcon} />
+                {/* <AntDesign name="thunderbolt" size={102} color="#030712" style={styles.thunderIcon} /> */}
 
                 <Animated.Image entering={FadeInDown.delay(500).duration(700).easing(Easing.linear)} exiting={FadeOut}
                     source={require('../../assets/watches/fit1.png')}
@@ -92,33 +92,9 @@ export default function App() {
 
             <View style={styles.cardView}>
 
-                <TopProducts
-                    productName={'Runner Pro - Smart Fit Band'}
-                    productPrice={'PKR - 4000'}
-                    imageSource={require('../../assets/watches/fit1.png')}
+                <TopProducts />
 
-                />
 
-                <TopProducts
-                    productName={'Runner Pro - Fit Band Pro'}
-                    productPrice={'PKR - 5500'}
-                    imageSource={require('../../assets/watches/fit4.png')}
-
-                />
-
-                <TopProducts
-                    productName={'Runner Pro - Smart Watch'}
-                    productPrice={'PKR - 3200'}
-                    imageSource={require('../../assets/watches/fit3.png')}
-
-                />
-
-                <TopProducts
-                    productName={'Round Smart Watch Pro'}
-                    productPrice={'PKR - 3200'}
-                    imageSource={require('../../assets/watches/fit5.png')}
-
-                />
 
             </View>
 
@@ -159,8 +135,8 @@ const styles = StyleSheet.create({
     textStyle: { top: 45, color: '#bfbfbf', fontSize: 14, fontWeight: "700" },
 
     cardView: {
-        flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', paddingHorizontal: 12,
-        marginTop: 130, height: 610,
+        flexDirection: 'row', paddingHorizontal: 12,
+        marginTop: 130, paddingBottom: 18, height:'auto',
     },
 
     topProductsView: { top: 105 },

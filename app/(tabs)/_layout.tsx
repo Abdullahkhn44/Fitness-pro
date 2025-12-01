@@ -1,13 +1,16 @@
 import React from 'react';
 import { Tabs, usePathname, useRouter } from 'expo-router';
 import Feather from '@expo/vector-icons/Feather';
-import { Image, TouchableOpacity } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { useAppSelector } from '../hooks';
 
 
 export default function TabLayout() {
 
     const pathname = usePathname();
     const router = useRouter();
+
+    const cartCount = useAppSelector((state) => state.cart.value.length)
 
 
     return (
@@ -17,7 +20,7 @@ export default function TabLayout() {
 
             initialRouteName='index'
             screenOptions={{
-                headerStyle: { backgroundColor: "#030712",  },
+                headerStyle: { backgroundColor: "#030712", },
                 headerTitleStyle: { fontSize: 25, fontWeight: 'bold' },
                 headerTintColor: "white",
                 tabBarStyle: { backgroundColor: "#030712", height: 60, },
@@ -26,11 +29,41 @@ export default function TabLayout() {
                 headerTitle: 'Runner Pro',
                 tabBarActiveBackgroundColor: '#030712',
                 headerRight: () => (
-                    <TouchableOpacity style={{marginRight:18}} onPress={()=>router.navigate('/Cart')}>
-                        <Feather size={24} name='shopping-cart' color={'white'}/>
+                    <TouchableOpacity onPress={() => router.navigate('/Cart')}>
+
+                        <View style={{ marginRight: 18, position: 'relative' }}>
+                            <Feather size={24} name='shopping-cart' color={'white'} />
+
+                            {/* Badge */}
+
+                            {cartCount > 0 && (
+                                <View
+                                    style={{
+                                        position: 'absolute',
+                                        top: -6,
+                                        right: -6,
+                                        backgroundColor: 'red',
+                                        width: 18,
+                                        height: 18,
+                                        borderRadius: 9,
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                    }}
+                                >
+
+                                    <Text style={{ color: 'white', fontSize: 10, fontWeight: 'bold' }}>
+                                        {cartCount}
+                                    </Text>
+                                </View>
+                            )}
+
+                        </View>
+
                     </TouchableOpacity>
-                    
+
                 )
+                ,
+
 
             }}>
 

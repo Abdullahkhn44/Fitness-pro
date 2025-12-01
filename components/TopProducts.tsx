@@ -1,22 +1,37 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native'
 import React from 'react'
 
 import Feather from '@expo/vector-icons/Feather';
+import { useRouter } from 'expo-router';
+import centralProduct from '../app/data/centralProduct';
 
 
-type TopProductProps = {
-    productName: string,
-    productPrice: string,
-    imageSource: any
-}
+// type TopProductProps = {
+//     productName: string,
+//     productPrice: string,
+//     imageSource: any
+// }
 
-const TopProducts: React.FC<TopProductProps> = ({ productName, productPrice, imageSource }) => {
-    return (
+const TopProducts = () => {
+
+    const router = useRouter();
+
+    const renderItem = ({ item }) => {
 
 
-        < View  >
+        const handlePress = () => {
 
-            {/* Card View */}
+            router.push({
+                pathname: '/productDetail',
+
+                params: {
+                    productId: item.id
+                }
+            })
+        }
+
+
+        return (
 
             < View style={styles.cardView} >
 
@@ -25,22 +40,36 @@ const TopProducts: React.FC<TopProductProps> = ({ productName, productPrice, ima
 
                 < View style={styles.imageView} >
 
-                    <TouchableOpacity>
-                        <Image source={imageSource} style={styles.cardImage} />
+                    <TouchableOpacity onPress={handlePress}>
+                        <Image source={item.imageSource} style={styles.cardImage} />
                     </TouchableOpacity>
                 </View >
 
                 {/* Text View */}
                 < View style={styles.textView} >
 
-                    <Text style={styles.cardText}>{productName}</Text>
-                    <Text style={styles.cardPrice}>{productPrice}</Text>
+                    <Text style={styles.cardText}>{item.productName}</Text>
+                    <Text style={styles.cardPrice}>{item.productPrice}</Text>
                 </View >
 
             </View >
 
 
-        </View >
+
+        )
+    }
+
+    return (
+
+        <FlatList
+            data={centralProduct}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={renderItem}
+            numColumns={2}
+        />
+
+
+
     )
 }
 
@@ -48,7 +77,7 @@ export default TopProducts
 
 const styles = StyleSheet.create({
 
-    cardView: { width: '100%', height: 260, backgroundColor: '#5AB3F2', borderRadius: 10, top: 30, justifyContent: 'center', alignItems: 'center', gap: 18, marginBottom: 20, },
+    cardView: { width: '48%', height: 'auto', backgroundColor: '#5AB3F2', borderRadius: 10, top: 20, justifyContent: 'center', alignItems: 'center', gap: 22, marginBottom: 28, margin:4 },
 
     imageView: {},
 

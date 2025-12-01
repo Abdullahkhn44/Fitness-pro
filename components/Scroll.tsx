@@ -5,7 +5,7 @@ import AutoScroll from '@homielab/react-native-auto-scroll';
 const Scroll = () => {
     return (
 
-        <AutoScroll style={styles.marquee} duration={25000} delay={500}>
+        <AutoScroll style={styles.marquee} duration={30000} delay={500}>
            
             <View style={styles.logoRow}>
 

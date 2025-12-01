@@ -2,8 +2,7 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import React, { useState } from 'react'
 import FilterScroll from '../../components/FilterScroll'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import ProductList from '../../components/ProductList';
-
+import TopProducts from '../../components/TopProducts';
 
 const valueItems = [
   "Smart Watch",
@@ -50,16 +49,24 @@ const Products = () => {
           )}
 
       </ScrollView>
+
+
       {/* Product List */}
-      <ScrollView contentContainerStyle={styles.mainProductStyle}>
+      <ScrollView >
 
-        <ProductList productPrice='3200-PKR' imageSource={require('../../assets/watches/fit4.png')} />
-        <ProductList productPrice='3200-PKR' imageSource={require('../../assets/watches/fit3.png')} />
-        <ProductList productPrice='3200-PKR' imageSource={require('../../assets/watches/fit2.png')} />
-        <ProductList productPrice='3200-PKR' imageSource={require('../../assets/watches/fit1.png')} />
-        <ProductList productPrice='3200-PKR' imageSource={require('../../assets/watches/fit5.png')} />
+        <View style={styles.cardView}>
+
+          <TopProducts />
 
 
+          {/* <TopProducts
+            productName={'Runner Pro - Smart Fit Band'}
+            productPrice={'PKR - 4000'}
+            imageSource={require('../../assets/watches/fit1.png')}
+
+          /> */}
+
+        </View>
       </ScrollView>
 
 
@@ -72,7 +79,7 @@ export default Products
 const styles = StyleSheet.create({
   mainView: { flex: 1, backgroundColor: '#030712' },
 
-  scrollStyle: { flexGrow: 1, height: 60, justifyContent: 'center', alignItems: 'center', gap: 15, marginTop: 20, flexDirection: 'row', paddingHorizontal: 15, },
+  scrollStyle: { flexGrow: 1, height: 60, justifyContent: 'center', alignItems: 'center', gap: 15, marginTop: 20, flexDirection: 'row', paddingHorizontal: 15, paddingBottom: 18 },
 
   scrollText: {
     fontSize: 17, color: 'white', fontWeight: '500', height: 37, width: 136, textAlign: 'center', borderRadius: 8, textAlignVertical: 'center', backgroundColor: 'rgba(80, 130, 200, 0.12)', borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.25)',
@@ -84,7 +91,9 @@ const styles = StyleSheet.create({
 
   clearFilterText: { color: 'white', fontSize: 16, fontWeight: '300', borderBottomWidth: 1, textAlign: 'center', textDecorationLine: 'underline' },
 
-  mainProductStyle: { flexGrow: 1, gap: 25, marginTop: 20, alignItems: 'center', marginBottom: 30 },
-
+  mainProductStyle: { flexGrow: 1, gap: 20, marginTop: 22, alignItems: 'center', paddingBottom: 45, },
+  cardView: {
+    flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', paddingHorizontal: 12, flexGrow: 1, paddingBottom: 40,
+  },
 
 })
